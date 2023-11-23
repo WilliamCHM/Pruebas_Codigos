@@ -1,5 +1,4 @@
 package seleniumScript;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,7 +9,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class Crear_codigo {
-	 // Selenium contiene una clase para trabajar con Chrome, añadimos nombre al objeto.
+    // Selenium contiene una clase para trabajar con Chrome, añadimos nombre al objeto.
     // Chrome Driver contiene el código para interactuar con Chrome
     ChromeDriver driver;
     WebDriverWait wait;
@@ -20,30 +19,24 @@ public class Crear_codigo {
     @BeforeClass
     public void invocarNavegador() {
         // Ruta donde se encuentra el ejecutable de ChromeDriver
-        System.setProperty("webdriver.chrome.driver",
-                "C:\\Users\\William\\Desktop\\pruebas\\chromedriver-win64\\chromedriver.exe");
-
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\William\\Desktop\\pruebas\\chromedriver-win64\\chromedriver.exe");
         driver = new ChromeDriver(); // Inicializando el objeto
         wait = new WebDriverWait(driver, 10);
         driver.manage().window().maximize(); // Maximizando la ventana
         driver.get(url);
     }
 
-
-    // Segundo caso de prueba para verificar el login
     @Test(priority = 0)
     public void verificarLoginDeGuru99Application() {
         // Para identificar elementos como el id, Selenium provee una interfaz llamada WebElement
         WebElement userId = driver.findElement(By.name("email")); // Locator
         WebElement userPassword = driver.findElement(By.name("password"));
         WebElement loginButton = driver.findElement(By.id("btnLogin"));
-        
 
         // Ejecución con el método sendKeys
         userId.sendKeys("cm18064@ues.edu.sv");
         userPassword.sendKeys("Minerva.23");
         loginButton.click();
-        
         
         //WebElement btnCodigo = driver.findElement(By.id("btnGestionCodigos"));
         WebElement elementoPrincipal = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("logo-sidebar1")));
@@ -64,8 +57,6 @@ public class Crear_codigo {
 	     okButton.click();
         
     }
-    
-
     // Para cerrar el navegador después de todas las pruebas
     @AfterClass
     public void closeBrowser() {
